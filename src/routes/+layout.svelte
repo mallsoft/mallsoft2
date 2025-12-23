@@ -13,7 +13,6 @@
 
 <style>
 	:global(:root) {
-		scrollbar-gutter: stable both-edges;
 		color: #343195;
 		font-weight: normal;
 		font-size: x-large;

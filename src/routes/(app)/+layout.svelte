@@ -11,7 +11,7 @@
 <style>
 	main {
 		max-width: 50ch;
-		margin: 10cqh 10cqw;
+		margin: 5cqh 10cqw;
 		padding: 2.5cqh min(5cqw, 5ch);
 		padding-bottom: 10cqh;
 
@@ -20,7 +20,7 @@
 
 	@media (width < 600px) {
 		main {
-			margin: 15cqh 2cqw;
+			margin: 5cqh 2cqw;
 		}
 	}
 </style>
