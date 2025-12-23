@@ -1,0 +1,15 @@
+a:link {
+	color: color-mix(in srgb, currentColor, rebeccapurple 100%);
+}
+
+a:visited {
+	color: color-mix(in srgb, currentColor, rebeccapurple 50%);
+}
+
+a:hover {
+	color: inherit;
+}
+
+a:active {
+	color: rebeccapurple;
+}
