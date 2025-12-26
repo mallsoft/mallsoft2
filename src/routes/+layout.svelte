@@ -5,7 +5,6 @@
 </script>
 
 <svelte:head>
-	<link rel="preload" as="style" href="./global.css" />
 	<link rel="icon" href={favicon} />
 	<title>mallsoft.dev</title>
 	<meta
