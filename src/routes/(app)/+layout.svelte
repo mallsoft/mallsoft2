@@ -2,8 +2,6 @@
 	let { children } = $props();
 </script>
 
-<title>mallsoft.dev</title>
-
 <main>
 	{@render children()}
 </main>
@@ -14,7 +12,6 @@
 		margin: 5cqh 10cqw;
 		padding: 2.5cqh min(5cqw, 5ch);
 		padding-bottom: 10cqh;
-
 		text-wrap: balance;
 	}
 

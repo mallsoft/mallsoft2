@@ -1,15 +1,17 @@
-a:link {
-	color: color-mix(in srgb, currentColor, rebeccapurple 100%);
+:root {
+	color: #4929e6;
+	font-weight: normal;
+	font-size: x-large;
+	font-family: Verdana, sans-serif;
+	line-height: 1.7;
 }
 
-a:visited {
-	color: color-mix(in srgb, currentColor, rebeccapurple 50%);
+body {
+	margin: 0;
 }
 
-a:hover {
-	color: inherit;
-}
-
-a:active {
-	color: rebeccapurple;
+@media (width < 600px) {
+	:global(:root) {
+		font-size: large;
+	}
 }

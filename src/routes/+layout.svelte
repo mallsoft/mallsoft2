@@ -7,27 +7,11 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<title>mallsoft.dev</title>
+	<meta
+		name="description"
+		content="UX and DX-focused developer building accessible, human-centered software."
+	/>
 </svelte:head>
 
 {@render children()}
-
-<style>
-	:global(:root) {
-		color: #343195;
-		font-weight: normal;
-		font-size: x-large;
-		font-family: Verdana, sans-serif;
-		line-height: 1.85;
-	}
-
-	:global(body) {
-		margin: 0;
-	}
-
-	@media (width < 600px) {
-		:global(:root) {
-			font-size: large;
-			line-height: 1.6;
-		}
-	}
-</style>
