@@ -1,3 +1,7 @@
+<script>
+  import Stuff from '$lib/components/Stuff.svelte';
+</script>
+
 # Me
 
 A developer enthusiastic about UX & DX, committed to building human-centered, accessible solutions.
