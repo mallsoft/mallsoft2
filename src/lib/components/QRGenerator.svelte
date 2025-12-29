@@ -14,7 +14,6 @@
 	let data = $state('');
 	let errMsg = $state('');
 	let color = $state(defaultColor);
-	let scale = $state(11);
 
 	$effect(() => {
 		toCanvas(
@@ -22,7 +21,7 @@
 			data || defaultData,
 			{
 				errorCorrectionLevel: 'H',
-				scale,
+				scale: 20,
 				margin: 4,
 				color
 			},
@@ -45,16 +44,18 @@
 	};
 </script>
 
-<div class="qr">
+<div class="container">
 	{#if errMsg}
 		<pre>{errMsg}</pre>
 	{:else}
-		<canvas
-			aria-label={data
-				? `showing input data as a qrcode, length ${data.length}`
-				: `showing default qrcode ${defaultData}`}
-			bind:this={canvas}
-		></canvas>
+		<div class="qr">
+			<canvas
+				aria-label={data
+					? `showing input data as a qrcode, length ${data.length}`
+					: `showing default qrcode ${defaultData}`}
+				bind:this={canvas}
+			></canvas>
+		</div>
 	{/if}
 
 	<div class="data">
@@ -84,41 +85,41 @@
 			}}>🗑</button
 		>
 	</div>
-	<div class="scale">
-		<label>
-			<span>x{scale}</span>
-			<input type="range" min="4" max="20" step="1" bind:value={scale} />
-		</label>
-	</div>
 
 	<button disabled={!!errMsg} onclick={downloadTheThing}>Download</button>
 </div>
 
 <style>
 	canvas {
-		aspect-ratio: 1 / 1;
 		display: block;
-		max-width: 100cqw;
-		max-height: 100cqw;
-
-		box-shadow:
-			5px 15px 20px -12px #00000057,
-			-5px 5px 20px -12px #00000057;
-
-		border-radius: 5px;
-
 		background: repeating-conic-gradient(
 				rgba(128, 128, 128, 0.125) 0 25%,
 				rgba(128, 128, 128, 0) 0 50%
 			)
 			50% / 10px 10px;
+
+		box-shadow:
+			0 0 10px 0 #0000001f,
+			10px 10px 15px -10px #0000004f;
+
+		border-radius: 10px;
+
+		max-width: 100cqw;
+		max-height: 100cqw;
 	}
 
 	.qr {
+		container-type: inline-size;
+		position: relative;
+		width: 100%;
+	}
+
+	.container {
 		display: flex;
 		gap: 1rem;
 		flex-direction: column;
 		max-width: max-content;
+		margin: 1em 0;
 	}
 
 	input[type='text'] {
