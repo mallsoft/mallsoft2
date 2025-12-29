@@ -1,0 +1,3 @@
+# Tools and stuff
+
+[QR code generator](/t/qr)
