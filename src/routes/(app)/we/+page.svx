@@ -1,0 +1,8 @@
+# We
+
+Win wars through logistics.
+Engineering logistics is tooling, CI/CD, and automation.
+Product logistics is feedback-driven adaptation.
+
+Reach out by [email](mailto:mallsoft@melaa.net).
+Or [GitHub](https://github.com/mallsoft) for the curious.
