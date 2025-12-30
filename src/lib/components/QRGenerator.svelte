@@ -2,6 +2,8 @@
 	import { boolean } from 'drizzle-orm/gel-core';
 	import { toCanvas } from 'qrcode';
 	import { onMount } from 'svelte';
+	import Error from '../../routes/+error.svelte';
+	import { downloadCanvasImage } from './download';
 
 	let canvas: HTMLCanvasElement | undefined = $state();
 
@@ -34,14 +36,6 @@
 	onMount(() => {
 		color = defaultColor;
 	});
-
-	const downloadTheThing = () => {
-		if (!canvas) return;
-		const link = document.createElement('a');
-		link.download = 'canvas.png';
-		link.href = canvas.toDataURL('image/png');
-		link.click();
-	};
 </script>
 
 <div class="container">
@@ -86,7 +80,14 @@
 		>
 	</div>
 
-	<button disabled={!!errMsg} onclick={downloadTheThing}>Download</button>
+	<button
+		disabled={!!errMsg || !canvas}
+		onclick={() => {
+			downloadCanvasImage(canvas!, 'qrcode_mallsoft.dev');
+		}}
+	>
+		Download
+	</button>
 </div>
 
 <style>
