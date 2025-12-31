@@ -1,6 +1,8 @@
 <script lang="ts">
 	import './global.css';
 	import favicon from '$lib/assets/favicon.png';
+	import Footer from '$lib/components/Footer.svelte';
+	import { page } from '$app/state';
 
 	let { children } = $props();
 </script>
@@ -18,17 +20,20 @@
 	{@render children()}
 </main>
 
+<Footer
+	show={page.url.pathname === '/we'}
+	links={[
+		{
+			text: 'QR Gen',
+			href: '/qr'
+		}
+	]}
+/>
+
 <style>
 	main {
-		max-width: 50ch;
-		padding: 2.5cqh min(5cqw, 5ch);
-		padding-bottom: 10cqh;
+		padding: min(7cqh, 10ch) min(5cqw, 5ch);
 		text-wrap: balance;
-	}
-
-	@media (width > 600px) {
-		main {
-			margin: 5cqh 10cqw;
-		}
+		max-width: 50ch;
 	}
 </style>

@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { boolean } from 'drizzle-orm/gel-core';
-	import { toCanvas } from 'qrcode';
+	import { toCanvas, toString } from 'qrcode';
 	import { onMount } from 'svelte';
-	import Error from '../../routes/+error.svelte';
 	import { downloadCanvasImage } from './download';
 
 	let canvas: HTMLCanvasElement | undefined = $state();
@@ -17,10 +15,13 @@
 	let errMsg = $state('');
 	let color = $state(defaultColor);
 
+	let svgQR = $state('');
+
 	$effect(() => {
+		const d: string = data || defaultData;
 		toCanvas(
 			canvas,
-			data || defaultData,
+			d,
 			{
 				errorCorrectionLevel: 'H',
 				scale: 20,
@@ -31,6 +32,19 @@
 				errMsg = err?.message ?? '';
 			}
 		);
+
+		toString(d, { type: 'svg' }, (err, res) => {
+			if (err) {
+				return console.error(err);
+			}
+
+			const t = document.createElement('temp');
+			t.innerHTML = res;
+			t.querySelector('path[fill]')?.setAttribute('fill', color.light);
+			t.querySelector('path[stroke]')?.setAttribute('stroke', color.dark);
+
+			svgQR = t.innerHTML;
+		});
 	});
 
 	onMount(() => {
@@ -53,7 +67,12 @@
 	{/if}
 
 	<div class="data">
-		<input type="text" aria-label="qr code data" placeholder={defaultData} bind:value={data} />
+		<input
+			type="text"
+			aria-label="qr code data"
+			placeholder={defaultData}
+			bind:value={data}
+		/>
 		<button
 			aria-label="reset"
 			type="reset"
@@ -62,6 +81,7 @@
 			}}>🗑</button
 		>
 	</div>
+
 	<div class="color">
 		<label style:--color={color.dark} aria-label="background color">
 			<input type="color" bind:value={color.dark} />
@@ -80,14 +100,21 @@
 		>
 	</div>
 
-	<button
-		disabled={!!errMsg || !canvas}
-		onclick={() => {
-			downloadCanvasImage(canvas!, 'qrcode_mallsoft.dev');
-		}}
-	>
-		Download
-	</button>
+	<div class="save">
+		<button
+			onclick={() => {
+				navigator.clipboard.writeText(svgQR);
+			}}>copy svg📄</button
+		>
+		<button
+			disabled={!!errMsg || !canvas}
+			onclick={() => {
+				downloadCanvasImage(canvas!, 'qrcode_mallsoft.dev');
+			}}
+		>
+			Download png
+		</button>
+	</div>
 </div>
 
 <style>
@@ -179,9 +206,9 @@
 			50% / 10px 10px;
 	}
 
-	.scale label {
+	.save {
 		display: flex;
-		align-items: center;
+		flex-wrap: wrap;
 		gap: 0.5em;
 	}
 </style>

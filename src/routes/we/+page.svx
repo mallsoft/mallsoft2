@@ -1,7 +1,7 @@
 # We
 
 Win wars through logistics.
-Engineering logistics is [tooling](/t), CI/CD, and automation.
+Engineering logistics is tooling, CI/CD, and automation.
 Product logistics is [feedback](https://github.com/mallsoft/mallsoft2/issues/new?template=feedback.md)-driven adaptation.
 
 Reach out by [email](mailto:mallsoft@melaa.net)
