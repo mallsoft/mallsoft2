@@ -1,7 +1,0 @@
-<script>
-  import QRGenerator from '$lib/components/QRGenerator.svelte';
-</script>
-
-# Generate QR Codes
-
-<QRGenerator />
