@@ -1,14 +1,10 @@
-<!-- <article>
-	<h1>todo</h1>
+<script lang="ts">
+	import CreateNewList from '$lib/components/todolist/CreateNewList.svelte';
+	import KnownLists from '$lib/components/todolist/KnownLists.svelte';
+</script>
 
-	<h2>saved todos</h2>
+<h1>Lists 🗃</h1>
 
-	<h2>create new</h2>
-	<form action="t/todo/?/create" method="POST">
-		<label>
-			Name
-			<input type="text" name="todoName" />
-		</label>
-		<button type="submit">Create</button>
-	</form>
-</article> -->
+<CreateNewList />
+
+<KnownLists />

@@ -1,5 +1,4 @@
-[email](mailto:mallsoft@melaa.net) ✉
-
-[github](https://github.com/mallsoft)
-
-[QR tool](/qr)
+- [email ✉](mailto:mallsoft@melaa.net)
+- [github](https://github.com/mallsoft)
+- [qr tool](/qr)
+<!-- - [todo](/todo) -->

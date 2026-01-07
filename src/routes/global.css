@@ -23,6 +23,13 @@ body {
 }
 
 /* ------------- */
+
+ul {
+	padding: 0;
+	list-style: circle;
+}
+
+/* ------------- */
 input,
 button {
 	--s-border: 1px solid #ccc;

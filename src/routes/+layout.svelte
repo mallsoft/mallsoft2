@@ -1,10 +1,14 @@
 <script lang="ts">
+	import Error from './+error.svelte';
+
 	import './global.css';
 	import favicon from '$lib/assets/favicon.png';
 	import { page } from '$app/state';
 	import type { ResolvedPathname } from '$app/types';
 
-	const footerLinks: { href: ResolvedPathname; text: string }[] = [
+	type SiteLink = { href: ResolvedPathname; text: string };
+
+	const footerLinks: SiteLink[] = [
 		{
 			href: '/',
 			text: 'index'
@@ -26,7 +30,6 @@
 		content="DX-focused developer building human-first stuff"
 	/>
 </svelte:head>
-
 <main>
 	{@render children()}
 </main>
@@ -51,11 +54,11 @@
 		padding: min(2cqh, 2ch) min(5cqw, 5ch);
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.8em;
+		gap: 1em;
 
 		overflow: hidden;
 
-		font-size: 0.8em;
+		font-size: 0.85em;
 
 		width: 100%;
 	}

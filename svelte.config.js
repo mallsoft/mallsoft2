@@ -6,9 +6,17 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
 	preprocess: [vitePreprocess(), mdsvex()],
 	kit: {
-		adapter: adapter({})
+		adapter: adapter(),
+		experimental: {
+			remoteFunctions: true
+		}
 	},
-	compilerOptions: { runes: true },
+	compilerOptions: {
+		runes: true,
+		experimental: {
+			async: true
+		}
+	},
 	extensions: ['.svelte', '.svx']
 };
 
